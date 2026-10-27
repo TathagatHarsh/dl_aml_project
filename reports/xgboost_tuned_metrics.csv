@@ -1,0 +1,2 @@
+Target,Best_CV_MAE,Validation_MAE,Validation_RMSE,Validation_R2,Best_Parameters
+RUL,31.83326816558838,24.266599655151367,33.499287611945014,0.7396386861801147,"{'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 300, 'min_child_weight': 7, 'max_depth': 3, 'learning_rate': 0.02, 'colsample_bytree': 0.7}"
