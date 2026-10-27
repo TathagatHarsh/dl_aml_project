@@ -1,72 +1,109 @@
+"""Exploratory Data Analysis (EDA) and Telemetry Profiling.
 
-from src.data_loader import load_train_data
+Module: src.explore_data
+Role: Member 1 (Data Preparation Pipeline)
+
+Objectives:
+    1. Validate data integrity (missingness, shape, cohort size).
+    2. Analyze distribution of total engine operational lifespans.
+    3. Profile sensor variability to empirically isolate invariant channels.
+    4. Visualize run-to-failure sensor degradation trajectories for representative units.
+    5. Generate diagnostic figures for the evaluation report.
+"""
+
+from pathlib import Path
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Load dataset
+from src.data_loader import load_train_data
+
+# Ensure report output directory exists for diagnostic plots
+REPORTS_DIR = Path(__file__).resolve().parents[1] / "reports"
+REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+
+# -------------------------------------------------------------------------
+# Step 1: Ingestion & Integrity Verification
+# -------------------------------------------------------------------------
 df = load_train_data()
 
-# Create reports directory if it doesn't exist
-from pathlib import Path
-REPORTS_DIR = Path(__file__).resolve().parents[1] / "reports"
-REPORTS_DIR.mkdir(exist_ok=True)
+print("\n========== 1. DATASET OVERVIEW & INTEGRITY ==========")
+print("Total observation records:", df.shape[0])
+print("Total telemetry features:", df.shape[1])
+print("Unique engine units:", df["engine_id"].nunique())
+print("Null / missing values detected:", df.isnull().sum().sum())
 
-# 1. Dataset overview
-print("\n========== DATASET OVERVIEW ==========")
-print("Shape:", df.shape)
-print("Number of engines:", df["engine_id"].nunique())
-print("Missing values:", df.isnull().sum().sum())
-
-# 2. Engine lifetime
+# -------------------------------------------------------------------------
+# Step 2: Engine Lifetime Distribution Analysis
+# -------------------------------------------------------------------------
+# Calculate the maximum operational cycle reached by each engine before failure
 engine_lifetimes = df.groupby("engine_id")["cycle"].max()
 
-print("\n========== ENGINE LIFETIME ==========")
+print("\n========== 2. ENGINE LIFETIME DISTRIBUTION ==========")
 print(engine_lifetimes.describe())
 
+# Plot histogram of engine lifespans to understand lifetime variance
 plt.figure(figsize=(10, 5))
-plt.hist(engine_lifetimes, bins=15, edgecolor="black")
-plt.xlabel("Total operating cycles")
-plt.ylabel("Number of engines")
-plt.title("Distribution of Engine Lifetimes")
+plt.hist(engine_lifetimes, bins=15, edgecolor="black", color="#3b82f6", alpha=0.85)
+plt.xlabel("Total Operating Cycles Until Failure")
+plt.ylabel("Number of Engines")
+plt.title("Distribution of Engine Lifetimes (FD001)")
+plt.grid(axis="y", linestyle="--", alpha=0.5)
 plt.tight_layout()
 plt.savefig(REPORTS_DIR / "engine_lifetimes.png", dpi=150)
 plt.close()
 
-# 3. Sensor variability
+# -------------------------------------------------------------------------
+# Step 3: Sensor Variability Profiling
+# -------------------------------------------------------------------------
+# Evaluate standard deviation across all 21 telemetry channels
 sensor_cols = [f"sensor_{i}" for i in range(1, 22)]
 sensor_std = df[sensor_cols].std().sort_values()
 
-print("\n========== SENSOR VARIABILITY ==========")
+print("\n========== 3. SENSOR VARIABILITY (STD DEV) ==========")
 print(sensor_std.to_string())
 
+# Bar chart visualizing sensor measurement dispersion
 plt.figure(figsize=(10, 6))
-sensor_std.plot(kind="bar")
-plt.ylabel("Standard deviation")
-plt.title("Variability of Sensor Measurements")
+sensor_std.plot(kind="bar", color="#0284c7", edgecolor="black")
+plt.ylabel("Standard Deviation")
+plt.xlabel("Sensor Channel")
+plt.title("Variability of Sensor Telemetry (FD001)")
 plt.xticks(rotation=45)
+plt.grid(axis="y", linestyle="--", alpha=0.5)
 plt.tight_layout()
 plt.savefig(REPORTS_DIR / "sensor_variability.png", dpi=150)
 plt.close()
 
-# 4. Sensor trends for engine 1
-engine = df[df["engine_id"] == 1]
+# -------------------------------------------------------------------------
+# Step 4: Run-to-Failure Sensor Trajectory (Engine #1)
+# -------------------------------------------------------------------------
+# Track individual sensor drift over time for a single unit from healthy to failed state
+engine_1 = df[df["engine_id"] == 1]
 
 plt.figure(figsize=(12, 6))
+for sensor, label in [
+    ("sensor_2", "Sensor 2 (LPC Outlet Temp)"),
+    ("sensor_3", "Sensor 3 (HPC Outlet Temp)"),
+    ("sensor_4", "Sensor 4 (LPT Outlet Temp)"),
+]:
+    plt.plot(engine_1["cycle"], engine_1[sensor], label=label, linewidth=1.8)
 
-for sensor in ["sensor_2", "sensor_3", "sensor_4"]:
-    plt.plot(engine["cycle"], engine[sensor], label=sensor)
-
-plt.xlabel("Operating cycle")
-plt.ylabel("Sensor reading (dataset units)")
-plt.title("Sensor Trends for Engine 1")
-plt.legend()
-plt.grid(True, alpha=0.3)
+plt.xlabel("Operating Cycle")
+plt.ylabel("Sensor Reading (Standardized Physical Units)")
+plt.title("Run-to-Failure Sensor Degradation Trends for Engine #1")
+plt.legend(loc="upper left")
+plt.grid(True, linestyle="--", alpha=0.4)
 plt.tight_layout()
 plt.savefig(REPORTS_DIR / "engine_1_sensor_trends.png", dpi=150)
 plt.close()
 
-# 5. Identify constant or nearly constant sensors
-print("\n========== LOW-VARIABILITY SENSORS ==========")
-print(sensor_std[sensor_std < 0.01])
+# -------------------------------------------------------------------------
+# Step 5: Identification of Invariant / Low-Variability Sensors
+# -------------------------------------------------------------------------
+# Confirm sensor channels showing virtually zero standard deviation (< 0.01)
+# These channels will be formally pruned during preprocessing to reduce noise.
+low_var_sensors = sensor_std[sensor_std < 0.01]
+print("\n========== 5. INVARIANT SENSORS (STD < 0.01) ==========")
+print(low_var_sensors)
 
-print(f"\nPlots saved to: {REPORTS_DIR}")
+print(f"\nDiagnostic figures successfully generated in: {REPORTS_DIR}")
