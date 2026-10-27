@@ -25,8 +25,9 @@ venv.bak/
 
 # Build and output directories
 output/
-.presentation-build/*
-!.presentation-build/dashboard.png
+tmp/
+.chart-data*
+.presentation-build/
 
 # Explicitly ensure reports (CSVs, plots) and dashboard snapshot are preserved
 !reports/
