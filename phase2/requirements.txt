@@ -1,0 +1,9 @@
+numpy
+pandas
+scikit-learn
+matplotlib
+torch
+joblib
+nbformat
+nbclient
+ipykernel
