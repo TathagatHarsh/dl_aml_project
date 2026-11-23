@@ -1,0 +1,12 @@
+test_endpoint_metrics_and_checkpoint (test_artifacts.ArtifactTests.test_endpoint_metrics_and_checkpoint) ... ok
+test_split_and_scaler_fit (test_artifacts.ArtifactTests.test_split_and_scaler_fit) ... ok
+test_checkpoint_roundtrip_and_gradients (test_pipeline.PipelineTests.test_checkpoint_roundtrip_and_gradients) ... ok
+test_features_are_causal_and_engine_local (test_pipeline.PipelineTests.test_features_are_causal_and_engine_local) ... ok
+test_invalid_data_rejected (test_pipeline.PipelineTests.test_invalid_data_rejected) ... ok
+test_metric_units (test_pipeline.PipelineTests.test_metric_units) ... ok
+test_windows_never_cross_engines_and_pad_left (test_pipeline.PipelineTests.test_windows_never_cross_engines_and_pad_left) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 2.483s
+
+OK

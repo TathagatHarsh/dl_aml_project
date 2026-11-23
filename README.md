@@ -1,5 +1,7 @@
 # EngineMind AI — Turbofan Engine Degradation & RUL Prognostics
 
+> **Phase Two is now available:** see [Phase Two guide](phase2/README.md), the [comparison notebook](phase2/Phase2_Engine_RUL.ipynb), and [submission materials](phase2/submission/). The results below describe the original Phase One experiment.
+
 [![Live Dashboard](https://img.shields.io/badge/Live%20Dashboard-Vercel%20App-00e5a3?style=for-the-badge&logo=vercel&logoColor=black)](https://dlamlproject-app.vercel.app/)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![XGBoost](https://img.shields.io/badge/Model-XGBoost%20Regressor-ff6600?style=for-the-badge&logo=xgboost&logoColor=white)](https://xgboost.readthedocs.io/)

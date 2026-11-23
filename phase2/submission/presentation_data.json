@@ -1,0 +1,162 @@
+{
+  "summary": [
+    {
+      "model": "Hybrid30",
+      "target": "capped",
+      "rmse": 14.51,
+      "mae": 10.427
+    },
+    {
+      "model": "Hybrid30",
+      "target": "uncapped",
+      "rmse": 15.517,
+      "mae": 11.497
+    },
+    {
+      "model": "LSTM1",
+      "target": "capped",
+      "rmse": 16.747,
+      "mae": 11.522
+    },
+    {
+      "model": "LSTM1",
+      "target": "uncapped",
+      "rmse": 17.721,
+      "mae": 12.592
+    },
+    {
+      "model": "LSTM30",
+      "target": "capped",
+      "rmse": 14.585,
+      "mae": 10.76
+    },
+    {
+      "model": "LSTM30",
+      "target": "uncapped",
+      "rmse": 15.678,
+      "mae": 11.83
+    },
+    {
+      "model": "LSTM30_no_dropout",
+      "target": "capped",
+      "rmse": 14.147,
+      "mae": 10.329
+    },
+    {
+      "model": "LSTM30_no_dropout",
+      "target": "uncapped",
+      "rmse": 15.343,
+      "mae": 11.399
+    },
+    {
+      "model": "RandomForest",
+      "target": "capped",
+      "rmse": 12.953,
+      "mae": 9.318
+    },
+    {
+      "model": "RandomForest",
+      "target": "uncapped",
+      "rmse": 14.156,
+      "mae": 10.388
+    }
+  ],
+  "selected": "RandomForest",
+  "ci": [
+    -2.5360159930882946,
+    1.997455961511446
+  ],
+  "conclusion": "The paired interval includes zero; a reliable hybrid advantage is not established.",
+  "stages": [
+    {
+      "model": "Hybrid30",
+      "stage": "early_over_90",
+      "rmse": 18.37712235804162,
+      "mae": 15.017031158226125
+    },
+    {
+      "model": "Hybrid30",
+      "stage": "late_0_30",
+      "rmse": 5.0293323277168405,
+      "mae": 3.9956816705067957
+    },
+    {
+      "model": "Hybrid30",
+      "stage": "middle_31_90",
+      "rmse": 16.459010445414375,
+      "mae": 12.381660264113854
+    },
+    {
+      "model": "LSTM1",
+      "stage": "early_over_90",
+      "rmse": 16.7166542019648,
+      "mae": 12.7466829272284
+    },
+    {
+      "model": "LSTM1",
+      "stage": "late_0_30",
+      "rmse": 14.597071719767705,
+      "mae": 8.884957402547201
+    },
+    {
+      "model": "LSTM1",
+      "stage": "middle_31_90",
+      "rmse": 21.352119728234815,
+      "mae": 15.54235638147113
+    },
+    {
+      "model": "LSTM30",
+      "stage": "early_over_90",
+      "rmse": 15.702077080257824,
+      "mae": 12.85519027709961
+    },
+    {
+      "model": "LSTM30",
+      "stage": "late_0_30",
+      "rmse": 6.887394516779387,
+      "mae": 5.607460759480794
+    },
+    {
+      "model": "LSTM30",
+      "stage": "middle_31_90",
+      "rmse": 20.29949462641262,
+      "mae": 15.566508062954606
+    },
+    {
+      "model": "LSTM30_no_dropout",
+      "stage": "early_over_90",
+      "rmse": 16.209856461249654,
+      "mae": 13.3838182532269
+    },
+    {
+      "model": "LSTM30_no_dropout",
+      "stage": "late_0_30",
+      "rmse": 5.060873519565413,
+      "mae": 4.061564286549886
+    },
+    {
+      "model": "LSTM30_no_dropout",
+      "stage": "middle_31_90",
+      "rmse": 19.16826414859534,
+      "mae": 14.576312492633688
+    },
+    {
+      "model": "RandomForest",
+      "stage": "early_over_90",
+      "rmse": 16.61610639209645,
+      "mae": 13.443341667993845
+    },
+    {
+      "model": "RandomForest",
+      "stage": "late_0_30",
+      "rmse": 5.881594802008716,
+      "mae": 4.278881961926963
+    },
+    {
+      "model": "RandomForest",
+      "stage": "middle_31_90",
+      "rmse": 14.940064515481422,
+      "mae": 10.808654398044483
+    }
+  ]
+}
