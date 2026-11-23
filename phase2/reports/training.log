@@ -1,0 +1,55 @@
+LSTM30, seed 42
+  epoch 1: validation RMSE 28.195
+  epoch 10: validation RMSE 20.137
+LSTM30, seed 43
+  epoch 1: validation RMSE 28.409
+  epoch 10: validation RMSE 17.934
+LSTM30, seed 44
+  epoch 1: validation RMSE 26.959
+  epoch 10: validation RMSE 15.777
+Hybrid30, seed 42
+  epoch 1: validation RMSE 20.266
+  epoch 10: validation RMSE 16.208
+Hybrid30, seed 43
+  epoch 1: validation RMSE 20.872
+  epoch 10: validation RMSE 14.711
+Hybrid30, seed 44
+  epoch 1: validation RMSE 20.178
+  epoch 10: validation RMSE 15.066
+  epoch 20: validation RMSE 15.301
+LSTM1, seed 42
+  epoch 1: validation RMSE 26.944
+  epoch 10: validation RMSE 22.904
+  epoch 20: validation RMSE 23.051
+LSTM1, seed 43
+  epoch 1: validation RMSE 28.626
+  epoch 10: validation RMSE 22.935
+  epoch 20: validation RMSE 22.297
+  epoch 30: validation RMSE 22.546
+LSTM1, seed 44
+  epoch 1: validation RMSE 26.893
+  epoch 10: validation RMSE 22.971
+  epoch 20: validation RMSE 22.660
+  epoch 30: validation RMSE 22.678
+LSTM30_no_dropout, seed 42
+  epoch 1: validation RMSE 27.939
+  epoch 10: validation RMSE 19.031
+LSTM30_no_dropout, seed 43
+  epoch 1: validation RMSE 28.263
+  epoch 10: validation RMSE 17.437
+LSTM30_no_dropout, seed 44
+  epoch 1: validation RMSE 26.650
+  epoch 10: validation RMSE 15.536
+                                 rmse                  mae          
+                                 mean       std       mean       std
+model             target                                            
+Hybrid30          capped    14.510121  0.724178  10.427436  0.381460
+                  uncapped  15.517250  0.652635  11.497436  0.381460
+LSTM1             capped    16.747101  0.051217  11.521997  0.025282
+                  uncapped  17.720986  0.041620  12.591997  0.025282
+LSTM30            capped    14.584881  0.665787  10.759540  0.420893
+                  uncapped  15.678372  0.649381  11.829540  0.420893
+LSTM30_no_dropout capped    14.147410  0.748170  10.329078  0.392846
+                  uncapped  15.342778  0.674803  11.399078  0.392846
+RandomForest      capped    12.953466       NaN   9.318167       NaN
+                  uncapped  14.155620       NaN  10.388167       NaN
