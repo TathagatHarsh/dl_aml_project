@@ -1,0 +1,216 @@
+{
+  "seed_split": 2026,
+  "train_engine_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12,
+    14,
+    15,
+    16,
+    19,
+    21,
+    22,
+    23,
+    24,
+    25,
+    27,
+    28,
+    29,
+    30,
+    31,
+    33,
+    34,
+    35,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    46,
+    48,
+    49,
+    50,
+    51,
+    53,
+    54,
+    55,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    66,
+    67,
+    68,
+    69,
+    70,
+    72,
+    73,
+    74,
+    75,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    86,
+    87,
+    88,
+    90,
+    91,
+    93,
+    94,
+    95,
+    96,
+    97,
+    99,
+    100
+  ],
+  "validation_engine_ids": [
+    11,
+    13,
+    17,
+    18,
+    20,
+    26,
+    32,
+    36,
+    45,
+    47,
+    52,
+    56,
+    65,
+    71,
+    76,
+    77,
+    85,
+    89,
+    92,
+    98
+  ],
+  "validation_endpoints": [
+    {
+      "engine_id": 11,
+      "cycle": 209
+    },
+    {
+      "engine_id": 13,
+      "cycle": 53
+    },
+    {
+      "engine_id": 17,
+      "cycle": 36
+    },
+    {
+      "engine_id": 18,
+      "cycle": 136
+    },
+    {
+      "engine_id": 20,
+      "cycle": 104
+    },
+    {
+      "engine_id": 26,
+      "cycle": 109
+    },
+    {
+      "engine_id": 32,
+      "cycle": 42
+    },
+    {
+      "engine_id": 36,
+      "cycle": 77
+    },
+    {
+      "engine_id": 45,
+      "cycle": 113
+    },
+    {
+      "engine_id": 47,
+      "cycle": 95
+    },
+    {
+      "engine_id": 52,
+      "cycle": 182
+    },
+    {
+      "engine_id": 56,
+      "cycle": 224
+    },
+    {
+      "engine_id": 65,
+      "cycle": 117
+    },
+    {
+      "engine_id": 71,
+      "cycle": 192
+    },
+    {
+      "engine_id": 76,
+      "cycle": 160
+    },
+    {
+      "engine_id": 77,
+      "cycle": 52
+    },
+    {
+      "engine_id": 85,
+      "cycle": 166
+    },
+    {
+      "engine_id": 89,
+      "cycle": 152
+    },
+    {
+      "engine_id": 92,
+      "cycle": 60
+    },
+    {
+      "engine_id": 98,
+      "cycle": 67
+    }
+  ],
+  "cap": 125.0,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "epochs_max": 60,
+  "patience": 10,
+  "regime": "FD001 single operating condition; training-only global standardization",
+  "data_source": "https://github.com/TathagatHarsh/dl_aml_project/tree/main/data",
+  "sha256": {
+    "train_FD001.txt": "963b5e22825b34d8b21c69e1aeb4af3e647050eb672ee8834ba4b5d91d2de0f8",
+    "RUL_FD001.txt": "a19c8ec94931949d0485bdc35118206e9c81c4547b422efb9cf86f4ceddbceca",
+    "test_FD001.txt": "3cda7109ce17bafb5443f2ac926cfcf88154b941b8c4cf95eb55d1ddd6f52851"
+  },
+  "versions": {
+    "torch": "2.15.0",
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "scikit-learn": "1.9.1"
+  },
+  "selected_by_validation": "RandomForest",
+  "hybrid_minus_lstm_ensemble_rmse_bootstrap_95ci": [
+    -2.5360159930882946,
+    1.997455961511446
+  ],
+  "elapsed_seconds": 106.3312786250026
+}
